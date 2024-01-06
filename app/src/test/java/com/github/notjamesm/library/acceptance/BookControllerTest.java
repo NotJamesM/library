@@ -14,21 +14,28 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class BookControllerTest {
+class BookControllerTest extends AcceptanceTest {
 
     @Autowired
     private MockMvc mvc;
+    private long bookId;
 
     @Test
     public void lookupBookByIdReturnsBook() throws Exception {
-        mvc.perform(get("/api/v1/book/123").accept(APPLICATION_JSON))
+        givenDatabaseContainsBook();
+
+        mvc.perform(get("/api/v1/book/%s".formatted(bookId)).accept(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json(aBook()
-                        .withId("1")
+                        .withId(bookId)
                         .withTitle("someTitle")
                         .withAuthor("someAuthor")
                         .toJson()
                 ));
+    }
+
+    private void givenDatabaseContainsBook() {
+        bookId = testDatabase.addBook("someTitle", "someAuthor").longValue();
     }
 
 }

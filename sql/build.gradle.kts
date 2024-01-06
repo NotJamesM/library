@@ -12,6 +12,7 @@ flyway {
     url = System.getenv("DATABASE_URL")
     user = System.getenv("DATABASE_USERNAME")
     password = System.getenv("DATABASE_PASSWORD")
+    locations = arrayOf("filesystem:src/main/resources/db")
     placeholders = mapOf(
         "libraryRolePassword" to libraryRolePassword
     )

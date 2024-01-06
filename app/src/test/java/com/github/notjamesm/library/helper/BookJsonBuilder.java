@@ -1,7 +1,7 @@
 package com.github.notjamesm.library.helper;
 
 public class BookJsonBuilder {
-    private String id;
+    private long id;
     private String title;
     private String author;
 
@@ -17,7 +17,7 @@ public class BookJsonBuilder {
         return BOOK_TEMPLATE.formatted(id, title, author);
     }
 
-    public BookJsonBuilder withId(String id) {
+    public BookJsonBuilder withId(long id) {
         this.id = id;
         return this;
     }

@@ -24,6 +24,7 @@ dependencies {
 
 	implementation("io.vavr:vavr:0.9.0")
 
+	implementation("org.springframework:spring-jdbc")
 	runtimeOnly("org.postgresql:postgresql")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

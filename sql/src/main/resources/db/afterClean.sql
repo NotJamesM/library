@@ -1,0 +1,1 @@
+drop role if exists library_read_write;
