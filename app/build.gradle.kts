@@ -20,6 +20,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-jersey")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+
 	implementation("io.vavr:vavr:0.9.0")
 
 	runtimeOnly("org.postgresql:postgresql")
