@@ -1,4 +1,4 @@
-package com.github.notjamesm.library;
+package com.github.notjamesm.library.acceptance;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
