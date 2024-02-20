@@ -5,10 +5,6 @@ public class BookJsonBuilder {
     private String title;
     private String author;
 
-    private BookJsonBuilder() {
-        throw new IllegalCallerException("Should not be instantiated.");
-    }
-
     public static BookJsonBuilder aBook() {
         return new BookJsonBuilder();
     }
