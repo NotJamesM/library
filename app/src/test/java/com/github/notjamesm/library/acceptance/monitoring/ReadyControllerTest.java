@@ -1,5 +1,6 @@
-package com.github.notjamesm.library.acceptance;
+package com.github.notjamesm.library.acceptance.monitoring;
 
+import com.github.notjamesm.library.acceptance.AcceptanceTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
