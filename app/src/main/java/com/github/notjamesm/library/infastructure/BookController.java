@@ -6,6 +6,7 @@ import com.github.notjamesm.library.usecases.LookupBookUseCase;
 import io.vavr.control.Either;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,12 +20,8 @@ public class BookController {
 
     @GetMapping(value = "/api/v1/book/{id}", produces = APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Book lookUpById(String id) {
+    public Book lookUpById(@PathVariable("id") String id) {
         final Either<LookupProblem, Book> lookup = lookupBookUseCase.lookupBookById(id);
-
-        if (lookup.isRight()){
-            throw new RuntimeException(lookup.right().toString());
-        }
 
         return lookup.get();
     }
