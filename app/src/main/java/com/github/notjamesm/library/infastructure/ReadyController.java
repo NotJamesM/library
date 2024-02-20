@@ -3,11 +3,13 @@ package com.github.notjamesm.library.infastructure;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class HelloController {
+import static jakarta.ws.rs.core.MediaType.TEXT_PLAIN;
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "hello";
+@RestController
+public class ReadyController {
+
+    @GetMapping(path = "/ready", produces = TEXT_PLAIN)
+    public String ready() {
+        return "OK";
     }
 }

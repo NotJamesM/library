@@ -3,7 +3,7 @@ package com.github.notjamesm.library.acceptance;
 import com.github.notjamesm.library.helper.TestDatabase;
 import org.junit.jupiter.api.BeforeEach;
 
-public class AcceptanceTest {
+public class AcceptanceTest implements HttpHeaderExamples {
 
     protected final TestDatabase testDatabase = new TestDatabase();
 
