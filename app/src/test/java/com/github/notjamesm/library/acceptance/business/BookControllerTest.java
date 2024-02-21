@@ -17,7 +17,7 @@ class BookControllerTest extends AcceptanceTest {
 
     @Test
     public void lookupBookByIdReturnsBook() throws Exception {
-        givenDatabaseContainsBook();
+        givenDatabaseContainsABook();
 
         mvc.perform(get("/api/v1/book/%s".formatted(bookId)).accept(APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -27,7 +27,7 @@ class BookControllerTest extends AcceptanceTest {
                         .withAuthor("someAuthor")));
     }
 
-    private void givenDatabaseContainsBook() {
+    private void givenDatabaseContainsABook() {
         bookId = testDatabase.addBook("someTitle", "someAuthor").longValue();
     }
 

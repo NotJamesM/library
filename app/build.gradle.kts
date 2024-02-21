@@ -29,4 +29,5 @@ dependencies {
 	runtimeOnly("org.postgresql:postgresql:42.7.1")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.2")
+	testImplementation("com.tngtech.archunit:archunit:1.2.1")
 }
