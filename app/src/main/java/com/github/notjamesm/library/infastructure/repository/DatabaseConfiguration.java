@@ -17,9 +17,9 @@ public class DatabaseConfiguration {
     @ConfigurationProperties("spring.datasource")
     public DataSource getDataSource() {
         final DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create().type(HikariDataSource.class);
-        dataSourceBuilder.url("jdbc:postgresql://localhost:5432/postgres");
-        dataSourceBuilder.username("postgres");
-        dataSourceBuilder.password("password");
+        dataSourceBuilder.url(System.getenv("DATABASE_URL"));
+        dataSourceBuilder.username(System.getenv("DATABASE_USERNAME"));
+        dataSourceBuilder.password(System.getenv("DATABASE_PASSWORD"));
         return dataSourceBuilder.build();
     }
 
