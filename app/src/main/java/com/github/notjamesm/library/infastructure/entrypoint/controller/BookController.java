@@ -1,4 +1,4 @@
-package com.github.notjamesm.library.infastructure;
+package com.github.notjamesm.library.infastructure.entrypoint.controller;
 
 import com.github.notjamesm.library.domain.Book;
 import com.github.notjamesm.library.domain.LookupProblem;
