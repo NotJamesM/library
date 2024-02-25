@@ -8,14 +8,16 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
-    @ExceptionHandler(ProblemException.class)
-    public ResponseEntity<Problem> handleException(ProblemException exception) {
-        return ResponseEntity.status(getStatusForProblem(exception.getProblem())).body(exception.getProblem());
+    private final ProblemStatusCodeMapper problemStatusCodeMapper;
+
+    public ControllerExceptionHandler(ProblemStatusCodeMapper problemStatusCodeMapper) {
+        this.problemStatusCodeMapper = problemStatusCodeMapper;
     }
 
-    private static int getStatusForProblem(Problem problem) {
-        return switch (problem.problemType()) {
-            case LOOKUP_PROBLEM -> 404;
-        };
+    @ExceptionHandler(ProblemException.class)
+    public ResponseEntity<Problem> handleException(ProblemException exception) {
+        var status = problemStatusCodeMapper.map(exception.getProblem().problemType());
+        return ResponseEntity.status(status).body(exception.getProblem());
     }
+
 }
