@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class BookControllerSadPathTest extends AcceptanceTest {
 
     @Test
-    public void lookupBookByIdReturnsBook() throws Exception {
+    public void shouldReturnLookupProblemWhenBookIsNotFound() throws Exception {
         givenDatabaseDoesNotContainABook();
 
         mvc.perform(get("/api/v1/book/5").accept(APPLICATION_JSON))
