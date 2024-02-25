@@ -30,7 +30,7 @@ public class BookJsonBuilder {
 
     private final static String BOOK_TEMPLATE = """
             {
-              "id": "%s",
+              "id": %s,
               "title": "%s",
               "author": "%s"
             }""";

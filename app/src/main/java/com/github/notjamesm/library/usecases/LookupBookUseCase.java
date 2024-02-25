@@ -7,7 +7,6 @@ import io.vavr.control.Either;
 import org.springframework.stereotype.Component;
 
 import static io.vavr.control.Either.right;
-import static java.lang.Long.parseLong;
 
 @Component
 public class LookupBookUseCase {
@@ -18,7 +17,7 @@ public class LookupBookUseCase {
         this.bookRepository = bookRepository;
     }
 
-    public Either<LookupProblem, Book> lookupBookById(String id) {
-        return right(bookRepository.getBookByIdOrBlowUp(parseLong(id)));
+    public Either<LookupProblem, Book> lookupBookById(Long id) {
+        return right(bookRepository.getBookByIdOrBlowUp(id));
     }
 }
