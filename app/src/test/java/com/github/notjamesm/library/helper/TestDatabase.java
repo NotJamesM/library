@@ -30,4 +30,14 @@ public class TestDatabase {
                 .usingGeneratedKeyColumns("book_id")
                 .executeAndReturnKey(Map.of("title", title, "author", author));
     }
+
+    public Long getBookId() {
+        return jdbcTemplate.queryForObject("SELECT book_id AS id FROM books", Long.class);
+    }
+
+    public boolean containsBook(String title, String author) {
+        final Long count = jdbcTemplate.queryForObject(
+                "SELECT COUNT(book_id) FROM books WHERE title='%s' AND author='%s'".formatted(title, author), Long.class);
+        return count == 1;
+    }
 }

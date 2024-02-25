@@ -9,7 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class AcceptanceTest implements HttpHeaderExamples {
+public class AcceptanceTest implements HttpHeaderExamples, BookExamples {
 
     @Autowired
     protected MockMvc mvc;

@@ -27,4 +27,11 @@ public class BookDatabase implements BookRepository {
             return Optional.empty();
         }
     }
+
+    @Override
+    public Book addBook(Book book) {
+        var bookToSave = new BookEntity(book.title(), book.author());
+        final BookEntity bookEntity = repository.save(bookToSave);
+        return new Book(bookEntity.getId(), book.title(), book.author());
+    }
 }

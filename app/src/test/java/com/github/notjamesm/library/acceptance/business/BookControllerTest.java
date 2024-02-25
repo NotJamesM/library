@@ -6,8 +6,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 
 import static com.github.notjamesm.library.helper.BookJsonBuilder.aBook;
 import static com.github.notjamesm.library.helper.CustomResultMatchers.bodyAsJson;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
@@ -21,12 +23,25 @@ class BookControllerTest extends AcceptanceTest {
                 .andExpect(status().isOk())
                 .andExpect(bodyAsJson(aBook()
                         .withId(bookId)
-                        .withTitle("someTitle")
-                        .withAuthor("someAuthor")));
+                        .withTitle(A_BOOK_TITLE)
+                        .withAuthor(A_BOOK_AUTHOR)));
+    }
+
+    @Test
+    void bookCreation() throws Exception {
+        mvc.perform(post("/api/v1/book").contentType(APPLICATION_JSON).content("""
+                        {"author":"Kenneth Grahame", "title":"The Wind in the Willows"}"""))
+                .andExpect(status().isCreated())
+                .andExpect(bodyAsJson(aBook()
+                        .withId(testDatabase::getBookId)
+                        .withTitle(A_BOOK_TITLE)
+                        .withAuthor(A_BOOK_AUTHOR)));
+
+        assertThat(testDatabase.containsBook(A_BOOK_TITLE, A_BOOK_AUTHOR)).isTrue();
     }
 
     private void givenDatabaseContainsABook() {
-        bookId = testDatabase.addBook("someTitle", "someAuthor").longValue();
+        bookId = testDatabase.addBook(A_BOOK_TITLE, A_BOOK_AUTHOR).longValue();
     }
 
     private long bookId;

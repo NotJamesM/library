@@ -1,7 +1,10 @@
 package com.github.notjamesm.library.helper;
 
+import java.util.function.Supplier;
+
 public class BookJsonBuilder implements JsonBuilder {
     private long id;
+    private Supplier<Long> idSupplier;
     private String title;
     private String author;
 
@@ -11,11 +14,19 @@ public class BookJsonBuilder implements JsonBuilder {
 
     @Override
     public String toJson() {
+        if(idSupplier != null){
+            id = idSupplier.get();
+        }
         return BOOK_TEMPLATE.formatted(id, title, author);
     }
 
     public BookJsonBuilder withId(long id) {
         this.id = id;
+        return this;
+    }
+
+    public BookJsonBuilder withId(Supplier<Long> id) {
+        this.idSupplier = id;
         return this;
     }
 
