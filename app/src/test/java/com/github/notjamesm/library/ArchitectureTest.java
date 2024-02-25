@@ -11,7 +11,6 @@ public class ArchitectureTest {
 
     @Test
     public void domainDoesNotHaveExternalDependencies() {
-
         ArchRule rule = classes().that().resideInAPackage("..domain..").should()
                 .onlyDependOnClassesThat().resideInAnyPackage("..domain..", "..java..");
 
@@ -20,10 +19,9 @@ public class ArchitectureTest {
 
     @Test
     public void useCasesOnlyDependOnDomain() {
-
         ArchRule rule = classes().that().resideInAPackage("..usecases..").should()
                 .onlyDependOnClassesThat().resideInAnyPackage("..domain..", "..java..", "..usecases..",
-                        "..io.vavr.control..", "..org.springframework..");
+                        "..io.vavr.control..", "..org.springframework..", "..org.slf4j..");
 
         rule.check(importedClasses);
     }
