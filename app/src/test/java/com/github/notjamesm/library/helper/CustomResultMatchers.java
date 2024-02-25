@@ -6,7 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class CustomResultMatchers {
 
-    public static ResultMatcher bodyAsJson(BookJsonBuilder bookJsonBuilder) {
-        return content().json(bookJsonBuilder.toJson());
+    public static ResultMatcher bodyAsJson(JsonBuilder jsonBuilder) {
+        return content().json(jsonBuilder.toJson());
     }
 }

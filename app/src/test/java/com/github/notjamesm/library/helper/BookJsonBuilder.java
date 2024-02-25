@@ -1,6 +1,6 @@
 package com.github.notjamesm.library.helper;
 
-public class BookJsonBuilder {
+public class BookJsonBuilder implements JsonBuilder {
     private long id;
     private String title;
     private String author;
@@ -9,6 +9,7 @@ public class BookJsonBuilder {
         return new BookJsonBuilder();
     }
 
+    @Override
     public String toJson() {
         return BOOK_TEMPLATE.formatted(id, title, author);
     }

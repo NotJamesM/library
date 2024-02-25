@@ -1,4 +1,5 @@
 package com.github.notjamesm.library.domain;
 
-public class LookupProblem {
+public enum ProblemType {
+    LOOKUP_PROBLEM
 }

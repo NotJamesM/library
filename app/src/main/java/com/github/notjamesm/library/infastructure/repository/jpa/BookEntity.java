@@ -1,4 +1,4 @@
-package com.github.notjamesm.library.infastructure.repository;
+package com.github.notjamesm.library.infastructure.repository.jpa;
 
 import jakarta.persistence.*;
 
@@ -9,12 +9,8 @@ public class BookEntity {
     @Column(name = "book_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String title;
     private String author;
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getId() {
         return id;

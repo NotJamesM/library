@@ -1,6 +1,8 @@
 package com.github.notjamesm.library.domain;
 
+import java.util.Optional;
+
 public interface BookRepository {
 
-    Book getBookByIdOrBlowUp(long id);
+    Optional<Book> getBookById(long id);
 }

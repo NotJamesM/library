@@ -1,4 +1,4 @@
-package com.github.notjamesm.library.infastructure.repository;
+package com.github.notjamesm.library.infastructure.repository.jpa;
 
 import com.github.notjamesm.library.domain.Book;
 import com.zaxxer.hikari.HikariDataSource;
