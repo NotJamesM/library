@@ -20,7 +20,7 @@ public class BookController {
 
     @GetMapping(value = "/api/v1/book/{id}", produces = APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Book lookUpById(@PathVariable("id") String id) {
+    public Book lookUpById(@PathVariable("id") Long id) {
         final Either<LookupProblem, Book> lookup = lookupBookUseCase.lookupBookById(id);
 
         return lookup.get();
